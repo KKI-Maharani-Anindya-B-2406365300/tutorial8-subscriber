@@ -9,4 +9,5 @@ The text guest:guest@localhost:5672 is part of the connection URL used to connec
 - 5672 is the default port commonly used by RabbitMQ for AMQP communication.
 In this tutorial, the subscriber connects to RabbitMQ using this configuration to listen for incoming messages from the queue.
 
-
+![alt text](queue-monitoring.png)
+The screenshot above shows the RabbitMQ monitoring dashboard after running the publisher multiple times. The spikes on the chart indicate that the publisher was continuously sending event messages to the message broker. Those messages were then placed into queues before being processed by the subscriber. The total number of queues shown in RabbitMQ is 2 because RabbitMQ automatically created the main queue used for handling the user_created events and another related queue for message handling purposes. Since the subscriber processes messages one by one, the queue helps store incoming events temporarily so that no messages are lost while waiting to be consumed.
